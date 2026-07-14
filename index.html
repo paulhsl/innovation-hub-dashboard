@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Innovation Hub — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg0:#060709; --glass:rgba(255,255,255,.035); --glass2:rgba(255,255,255,.06);
+    --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
+    --text:#eceef4; --muted:#8b93a7; --dim:#5b6378;
+    --vio:#8b5cf6; --grad:linear-gradient(135deg,#8b5cf6 0%,#06b6d4 100%);
+    --gold:#f5b544; --warn:#fbbf24; --r-md:13px; --r-sm:9px;
+    --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  * { box-sizing:border-box; }
+  html { color-scheme:dark; }
+  body { margin:0; min-height:100dvh; background:var(--bg0); color:var(--text);
+    font:14px/1.55 Inter,system-ui,"Segoe UI",sans-serif; -webkit-font-smoothing:antialiased; }
+  .aurora { position:fixed; inset:0; z-index:-1; background:
+    radial-gradient(1200px 700px at 85% -10%, rgba(139,92,246,.13), transparent 60%),
+    radial-gradient(1000px 600px at -10% 110%, rgba(6,182,212,.10), transparent 60%), var(--bg0); }
+  header { display:flex; align-items:center; gap:14px; flex-wrap:wrap; padding:16px 26px;
+    border-bottom:1px solid var(--line); background:rgba(8,9,13,.72); }
+  .logo { width:30px; height:30px; border-radius:9px; background:var(--grad); position:relative; flex:none;
+    box-shadow:0 0 22px rgba(139,92,246,.45); }
+  .logo::after { content:"⬡"; position:absolute; inset:0; display:grid; place-items:center; color:#fff; font-size:16px; }
+  h1 { font-size:16px; font-weight:800; letter-spacing:-.02em; margin:0;
+    background:linear-gradient(90deg,#fff 30%,#b7bdf0 70%,#7dd3fc); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .badge { font-size:12px; font-weight:600; padding:5px 13px; border-radius:99px;
+    border:1px solid var(--line); color:var(--muted); background:var(--glass); }
+  .hspace { flex:1; }
+  .stamp { font:600 11px var(--mono); color:var(--muted); }
+  #stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:14px; padding:20px 26px 4px; }
+  .stat { background:var(--glass); border:1px solid var(--line); border-radius:var(--r-md); padding:14px 18px; position:relative; overflow:hidden; }
+  .stat::after { content:""; position:absolute; inset:0 auto 0 0; width:3px; background:var(--grad); opacity:.7; }
+  .stat .k { font-size:11.5px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); }
+  .stat .v { font-size:26px; font-weight:800; letter-spacing:-.03em; margin-top:2px; }
+  main { padding:18px 26px 40px; }
+  h2 { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.09em; color:var(--muted); margin:26px 0 12px; }
+  #board { display:flex; gap:14px; align-items:stretch; overflow-x:auto; padding-bottom:8px; }
+  .col { flex:1 1 0; min-width:176px; background:var(--glass); border:1px solid var(--line);
+    border-radius:var(--r-md); padding:10px; display:flex; flex-direction:column; }
+  .col.side { border-style:dashed; opacity:.85; }
+  .col h3 { margin:2px 6px 10px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.09em;
+    color:var(--muted); display:flex; align-items:center; gap:8px; }
+  .col h3 .cnt { margin-left:auto; min-width:20px; text-align:center; background:var(--glass2);
+    border:1px solid var(--line); border-radius:99px; padding:1px 7px; font-size:10.5px; color:var(--text); }
+  .gatewrap { display:flex; flex-direction:column; align-items:center; gap:8px; width:38px; flex:none; }
+  .gatewrap .gline { flex:1; width:2px; background:linear-gradient(180deg,transparent,var(--gold),transparent); opacity:.55; }
+  .gatewrap .gicon { width:30px; height:30px; border-radius:50%; display:grid; place-items:center; font-size:13px;
+    background:rgba(245,181,68,.10); border:1px solid rgba(245,181,68,.45); color:var(--gold); }
+  .gatewrap .glabel { font-size:9.5px; font-weight:700; letter-spacing:.08em; color:var(--gold); writing-mode:vertical-rl; opacity:.8; }
+  .card { position:relative; background:rgba(255,255,255,.045); border:1px solid var(--line); border-radius:var(--r-sm);
+    padding:11px 12px; margin-bottom:9px; overflow:hidden; }
+  .card::before { content:""; position:absolute; inset:0 auto 0 0; width:3px; background:var(--sc,var(--vio)); opacity:.85; }
+  .cid { display:flex; align-items:center; gap:6px; font-family:var(--mono); font-size:10.5px; color:var(--muted); }
+  .ctitle { font-weight:650; font-size:13.5px; letter-spacing:-.01em; margin:4px 0 7px; }
+  .cfoot { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .cdocs { display:flex; gap:6px; flex-wrap:wrap; margin-top:7px; }
+  .cdocs span { font:600 9.5px var(--mono); color:var(--dim); border:1px solid var(--line); border-radius:5px; padding:1px 6px; }
+  .chip { font-size:10.5px; font-weight:600; color:var(--muted); background:var(--glass2); border:1px solid var(--line);
+    border-radius:99px; padding:2px 8px; white-space:nowrap; }
+  .chip.dim { color:var(--dim); }
+  .risk-dot { margin-left:auto; color:var(--warn); font-size:12px; }
+  .ring { --p:0; width:30px; height:30px; border-radius:50%; flex:none; position:relative;
+    background:conic-gradient(#8b5cf6 0deg,#06b6d4 calc(var(--p)*1deg),rgba(255,255,255,.07) calc(var(--p)*1deg)); }
+  .ring::before { content:""; position:absolute; inset:3px; border-radius:50%; background:#11141c; }
+  .ring span { position:absolute; inset:0; display:grid; place-items:center; font-family:var(--mono); font-size:9.5px; font-weight:600; }
+  .empty { color:var(--dim); padding:18px 8px; text-align:center; font-size:11.5px; border:1px dashed var(--line); border-radius:var(--r-sm); }
+  .pill { display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; padding:3px 11px;
+    border-radius:99px; border:1px solid; white-space:nowrap; }
+  .pill::before { content:""; width:6px; height:6px; border-radius:50%; background:currentColor; }
+  .tcard { background:var(--glass); border:1px solid var(--line); border-radius:var(--r-md); overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; min-width:760px; }
+  th,td { text-align:left; padding:11px 16px; border-bottom:1px solid var(--line); }
+  th { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); white-space:nowrap; }
+  tbody tr:last-child td { border-bottom:0; }
+  td.mono { font-family:var(--mono); font-size:12px; color:var(--muted); }
+  .score-cell { display:flex; align-items:center; gap:10px; font-weight:700; }
+  .sbar { width:54px; height:5px; border-radius:99px; background:rgba(255,255,255,.07); overflow:hidden; }
+  .sbar > i { display:block; height:100%; border-radius:99px; background:var(--grad); }
+  footer { padding:0 26px 30px; color:var(--dim); font-size:11.5px; }
+  @media (max-width:760px) { header, main, #stats, footer { padding-left:14px; padding-right:14px; } }
+</style>
+</head>
+<body>
+<div class="aurora"></div>
+<header>
+  <div class="logo"></div><h1>Innovation Hub</h1>
+  <span class="badge">Read-only</span>
+  <div class="hspace"></div>
+  <span class="stamp">Stand: 2026-07-14 09:14</span>
+</header>
+<div id="stats">
+  <div class="stat"><div class="k">Aktive Ideen</div><div class="v">10</div></div>
+  <div class="stat"><div class="k">Warten an Gates</div><div class="v">1</div></div>
+  <div class="stat"><div class="k">Im Bau / Übergeben</div><div class="v">0</div></div>
+  <div class="stat"><div class="k">Ø Score</div><div class="v">6.4</div></div>
+</div>
+<main>
+  <h2>Pipeline</h2>
+  <div id="board"><div class="col">
+    <h3><span style="color:#94a3b8">●</span> Erfasst<span class="cnt">9</span></h3>
+    <div class="cards"><div class="card" style="--sc:#94a3b8">
+    <div class="cid"><span>IDEA-003</span></div>
+    <div class="ctitle">Literatur-Agent</div>
+    <div class="cfoot">
+      <div class="ring" style="--p:4"><span>–</span></div>
+      <span class="chip">#agent</span><span class="chip">#ki-agents</span>
+      <span class="chip dim">2026-07-13</span>
+    </div>
+    
+  </div><div class="card" style="--sc:#94a3b8">
+    <div class="cid"><span>IDEA-004</span></div>
+    <div class="ctitle">Boardroom-Assistent (Schreibstil)</div>
+    <div class="cfoot">
+      <div class="ring" style="--p:4"><span>–</span></div>
+      <span class="chip">#agent</span><span class="chip">#ki-agents</span>
+      <span class="chip dim">2026-07-13</span>
+    </div>
+    
+  </div><div class="card" style="--sc:#94a3b8">
+    <div class="cid"><span>IDEA-005</span></div>
+    <div class="ctitle">KI-Turnier-Prognose-Service</div>
+    <div class="cfoot">
+      <div class="ring" style="--p:4"><span>–</span></div>
+      <span class="chip">#sport</span><span class="chip">#prognose</span>
+      <span class="chip dim">2026-07-13</span>
+    </div>
+    
+  </div><div class="card" style="--sc:#94a3b8">
+    <div class="cid"><span>IDEA-007</span></div>
+    <div class="ctitle">Finance-Dashboard</div>
+    <div class="cfoot">
+      <div class="ring" style="--p:4"><span>–</span></div>
+      <span class="chip">#finanzen</span><span class="chip">#dashboard</span>
+      <span class="chip dim">2026-07-13</span>
+    </div>
+    
+  </div><div class="card" style="--sc:#94a3b8">
+    <div class="cid"><span>IDEA-008</span></div>
+    <div class="ctitle">Alltags-Skills-Sammlung</div>
+    <div class="cfoot">
+      <div class="ring" style="--p:4"><span>–</span></div>
+      <span class="chip">#skills</span><span class="chip">#produktivitaet</span>
+      <span class="chip dim">2026-07-13</span>
+    </div>
+    
+  </div><div class="card" style="--sc:#94a3b8">
+    <div class="cid"><span>IDEA-009</span></div>
+    <div class="ctitle">General-Manager-Agent (System-Ueberblick)</div>
+    <div class="cfoot">
+      <div class="ring" style="--p:4"><span>–</span></div>
+      <span class="chip">#meta</span><span class="chip">#agent</span>
+      <span class="chip dim">2026-07-13</span>
+    </div>
+    
+  </div><div class="card" style="--sc:#94a3b8">
+    <div class="cid"><span>IDEA-010</span></div>
+    <div class="ctitle">Schriftfuehrer-Agent fuer Obsidian-Vault</div>
+    <div class="cfoot">
+      <div class="ring" style="--p:4"><span>–</span></div>
+      <span class="chip">#obsidian</span><span class="chip">#wissensmanagement</span>
+      <span class="chip dim">2026-07-13</span>
+    </div>
+    
+  </div><div class="card" style="--sc:#94a3b8">
+    <div class="cid"><span>IDEA-011</span></div>
+    <div class="ctitle">Persönlicher Kochbot</div>
+    <div class="cfoot">
+      <div class="ring" style="--p:4"><span>–</span></div>
+      <span class="chip">#agent</span><span class="chip">#ki-agents</span>
+      <span class="chip dim">2026-07-13</span>
+    </div>
+    
+  </div><div class="card" style="--sc:#94a3b8">
+    <div class="cid"><span>IDEA-012</span></div>
+    <div class="ctitle">Tagesplaner-Agent</div>
+    <div class="cfoot">
+      <div class="ring" style="--p:4"><span>–</span></div>
+      <span class="chip">#agent</span><span class="chip">#ki-agents</span>
+      <span class="chip dim">2026-07-13</span>
+    </div>
+    
+  </div></div>
+  </div><div class="col">
+    <h3><span style="color:#818cf8">●</span> Diskutiert<span class="cnt">1</span></h3>
+    <div class="cards"><div class="card" style="--sc:#818cf8">
+    <div class="cid"><span>IDEA-013</span><span class="risk-dot">⚠</span></div>
+    <div class="ctitle">KI-Lebenscoach: Ziele, Kalender &amp; Lernzeit</div>
+    <div class="cfoot">
+      <div class="ring" style="--p:190.8"><span>5.3</span></div>
+      <span class="chip">#agent</span><span class="chip">#ki-agents</span>
+      <span class="chip dim">2026-07-14</span>
+    </div>
+    <div class="cdocs"><span>Diskussion</span><span>Council×1</span></div>
+  </div></div>
+  </div><div class="gatewrap"><div class="gline"></div><div class="gicon">⬡</div><div class="glabel">GATE 1</div><div class="gline"></div></div><div class="col">
+    <h3><span style="color:#a78bfa">●</span> Ausgewählt<span class="cnt">0</span></h3>
+    <div class="cards"><div class="empty">–</div></div>
+  </div><div class="col">
+    <h3><span style="color:#8b5cf6">●</span> Spezifiziert<span class="cnt">0</span></h3>
+    <div class="cards"><div class="empty">–</div></div>
+  </div><div class="gatewrap"><div class="gline"></div><div class="gicon">⬡</div><div class="glabel">GATE 2</div><div class="gline"></div></div><div class="col">
+    <h3><span style="color:#f5b544">●</span> Freigegeben<span class="cnt">0</span></h3>
+    <div class="cards"><div class="empty">–</div></div>
+  </div><div class="col">
+    <h3><span style="color:#22d3ee">●</span> Übergeben<span class="cnt">0</span></h3>
+    <div class="cards"><div class="empty">–</div></div>
+  </div><div class="col">
+    <h3><span style="color:#06b6d4">●</span> Im Bau<span class="cnt">0</span></h3>
+    <div class="cards"><div class="empty">–</div></div>
+  </div><div class="col">
+    <h3><span style="color:#34d399">●</span> Fertig<span class="cnt">1</span></h3>
+    <div class="cards"><div class="card" style="--sc:#34d399">
+    <div class="cid"><span>IDEA-002</span><span class="chip">minimal</span></div>
+    <div class="ctitle">Wochenbericht-Generator (Test)</div>
+    <div class="cfoot">
+      <div class="ring" style="--p:288"><span>8</span></div>
+      <span class="chip">#test</span><span class="chip">#reporting</span>
+      <span class="chip dim">2026-06-11</span>
+    </div>
+    <div class="cdocs"><span>Diskussion</span><span>Spec</span><span>Retro</span></div>
+  </div></div>
+  </div><div class="col side">
+    <h3><span style="color:#f87171">●</span> Verworfen<span class="cnt">2</span></h3>
+    <div class="cards"><div class="card" style="--sc:#f87171">
+    <div class="cid"><span>IDEA-001</span><span class="chip">standard</span><span class="risk-dot">⚠</span></div>
+    <div class="ctitle">Mail-Triage Agent (Beispiel)</div>
+    <div class="cfoot">
+      <div class="ring" style="--p:216"><span>6</span></div>
+      <span class="chip">#automatisierung</span><span class="chip">#email</span>
+      <span class="chip dim">2026-07-14</span>
+    </div>
+    <div class="cdocs"><span>Diskussion</span><span>Council×1</span><span>Spec</span></div>
+  </div><div class="card" style="--sc:#f87171">
+    <div class="cid"><span>IDEA-006</span></div>
+    <div class="ctitle">Innovations-Agent (Ideen-Pipeline)</div>
+    <div class="cfoot">
+      <div class="ring" style="--p:4"><span>–</span></div>
+      <span class="chip">#meta</span><span class="chip">#agent</span>
+      <span class="chip dim">2026-07-14</span>
+    </div>
+    
+  </div></div>
+  </div></div>
+  <h2>Alle Ideen (nach Score)</h2>
+  <div class="tcard"><table>
+    <thead><tr><th>Score</th><th>ID</th><th>Titel</th><th>Status</th><th>Variante</th><th>I / A / K</th><th>Tags</th><th>Aktualisiert</th></tr></thead>
+    <tbody><tr>
+  <td><div class="score-cell">8<div class="sbar"><i style="width:80%"></i></div></div></td>
+  <td class="mono">IDEA-002</td>
+  <td>Wochenbericht-Generator (Test)</td>
+  <td><span class="pill" style="color:#34d399;border-color:#34d39955;background:#34d39914">Fertig</span></td>
+  <td>minimal</td>
+  <td class="mono">2 / 1 / 4</td>
+  <td><span class="chip">#test</span> <span class="chip">#reporting</span></td>
+  <td class="mono">2026-06-11</td>
+</tr><tr>
+  <td><div class="score-cell">6<div class="sbar"><i style="width:60%"></i></div></div></td>
+  <td class="mono">IDEA-001</td>
+  <td>Mail-Triage Agent (Beispiel) <span class="risk-dot">⚠</span></td>
+  <td><span class="pill" style="color:#f87171;border-color:#f8717155;background:#f8717114">Verworfen</span></td>
+  <td>standard</td>
+  <td class="mono">4 / 2 / 3</td>
+  <td><span class="chip">#automatisierung</span> <span class="chip">#email</span> <span class="chip">#beispiel</span></td>
+  <td class="mono">2026-07-14</td>
+</tr><tr>
+  <td><div class="score-cell">5.3<div class="sbar"><i style="width:53%"></i></div></div></td>
+  <td class="mono">IDEA-013</td>
+  <td>KI-Lebenscoach: Ziele, Kalender &amp; Lernzeit <span class="risk-dot">⚠</span></td>
+  <td><span class="pill" style="color:#818cf8;border-color:#818cf855;background:#818cf814">Diskutiert</span></td>
+  <td>–</td>
+  <td class="mono">4 / 3 / 4</td>
+  <td><span class="chip">#agent</span> <span class="chip">#ki-agents</span> <span class="chip">#produktivitaet</span> <span class="chip">#ziele</span> <span class="chip">#kalender</span> <span class="chip">#lernen</span></td>
+  <td class="mono">2026-07-14</td>
+</tr><tr>
+  <td><div class="score-cell">–<div class="sbar"><i style="width:0%"></i></div></div></td>
+  <td class="mono">IDEA-003</td>
+  <td>Literatur-Agent</td>
+  <td><span class="pill" style="color:#94a3b8;border-color:#94a3b855;background:#94a3b814">Erfasst</span></td>
+  <td>–</td>
+  <td class="mono">– / – / –</td>
+  <td><span class="chip">#agent</span> <span class="chip">#ki-agents</span></td>
+  <td class="mono">2026-07-13</td>
+</tr><tr>
+  <td><div class="score-cell">–<div class="sbar"><i style="width:0%"></i></div></div></td>
+  <td class="mono">IDEA-004</td>
+  <td>Boardroom-Assistent (Schreibstil)</td>
+  <td><span class="pill" style="color:#94a3b8;border-color:#94a3b855;background:#94a3b814">Erfasst</span></td>
+  <td>–</td>
+  <td class="mono">– / – / –</td>
+  <td><span class="chip">#agent</span> <span class="chip">#ki-agents</span> <span class="chip">#schreiben</span></td>
+  <td class="mono">2026-07-13</td>
+</tr><tr>
+  <td><div class="score-cell">–<div class="sbar"><i style="width:0%"></i></div></div></td>
+  <td class="mono">IDEA-005</td>
+  <td>KI-Turnier-Prognose-Service</td>
+  <td><span class="pill" style="color:#94a3b8;border-color:#94a3b855;background:#94a3b814">Erfasst</span></td>
+  <td>–</td>
+  <td class="mono">– / – / –</td>
+  <td><span class="chip">#sport</span> <span class="chip">#prognose</span> <span class="chip">#ki-service</span></td>
+  <td class="mono">2026-07-13</td>
+</tr><tr>
+  <td><div class="score-cell">–<div class="sbar"><i style="width:0%"></i></div></div></td>
+  <td class="mono">IDEA-006</td>
+  <td>Innovations-Agent (Ideen-Pipeline)</td>
+  <td><span class="pill" style="color:#f87171;border-color:#f8717155;background:#f8717114">Verworfen</span></td>
+  <td>–</td>
+  <td class="mono">– / – / –</td>
+  <td><span class="chip">#meta</span> <span class="chip">#agent</span> <span class="chip">#pipeline</span></td>
+  <td class="mono">2026-07-14</td>
+</tr><tr>
+  <td><div class="score-cell">–<div class="sbar"><i style="width:0%"></i></div></div></td>
+  <td class="mono">IDEA-007</td>
+  <td>Finance-Dashboard</td>
+  <td><span class="pill" style="color:#94a3b8;border-color:#94a3b855;background:#94a3b814">Erfasst</span></td>
+  <td>–</td>
+  <td class="mono">– / – / –</td>
+  <td><span class="chip">#finanzen</span> <span class="chip">#dashboard</span></td>
+  <td class="mono">2026-07-13</td>
+</tr><tr>
+  <td><div class="score-cell">–<div class="sbar"><i style="width:0%"></i></div></div></td>
+  <td class="mono">IDEA-008</td>
+  <td>Alltags-Skills-Sammlung</td>
+  <td><span class="pill" style="color:#94a3b8;border-color:#94a3b855;background:#94a3b814">Erfasst</span></td>
+  <td>–</td>
+  <td class="mono">– / – / –</td>
+  <td><span class="chip">#skills</span> <span class="chip">#produktivitaet</span></td>
+  <td class="mono">2026-07-13</td>
+</tr><tr>
+  <td><div class="score-cell">–<div class="sbar"><i style="width:0%"></i></div></div></td>
+  <td class="mono">IDEA-009</td>
+  <td>General-Manager-Agent (System-Ueberblick)</td>
+  <td><span class="pill" style="color:#94a3b8;border-color:#94a3b855;background:#94a3b814">Erfasst</span></td>
+  <td>–</td>
+  <td class="mono">– / – / –</td>
+  <td><span class="chip">#meta</span> <span class="chip">#agent</span> <span class="chip">#orchestrierung</span></td>
+  <td class="mono">2026-07-13</td>
+</tr><tr>
+  <td><div class="score-cell">–<div class="sbar"><i style="width:0%"></i></div></div></td>
+  <td class="mono">IDEA-010</td>
+  <td>Schriftfuehrer-Agent fuer Obsidian-Vault</td>
+  <td><span class="pill" style="color:#94a3b8;border-color:#94a3b855;background:#94a3b814">Erfasst</span></td>
+  <td>–</td>
+  <td class="mono">– / – / –</td>
+  <td><span class="chip">#obsidian</span> <span class="chip">#wissensmanagement</span> <span class="chip">#agent</span></td>
+  <td class="mono">2026-07-13</td>
+</tr><tr>
+  <td><div class="score-cell">–<div class="sbar"><i style="width:0%"></i></div></div></td>
+  <td class="mono">IDEA-011</td>
+  <td>Persönlicher Kochbot</td>
+  <td><span class="pill" style="color:#94a3b8;border-color:#94a3b855;background:#94a3b814">Erfasst</span></td>
+  <td>–</td>
+  <td class="mono">– / – / –</td>
+  <td><span class="chip">#agent</span> <span class="chip">#ki-agents</span> <span class="chip">#alltag</span> <span class="chip">#ernaehrung</span></td>
+  <td class="mono">2026-07-13</td>
+</tr><tr>
+  <td><div class="score-cell">–<div class="sbar"><i style="width:0%"></i></div></div></td>
+  <td class="mono">IDEA-012</td>
+  <td>Tagesplaner-Agent</td>
+  <td><span class="pill" style="color:#94a3b8;border-color:#94a3b855;background:#94a3b814">Erfasst</span></td>
+  <td>–</td>
+  <td class="mono">– / – / –</td>
+  <td><span class="chip">#agent</span> <span class="chip">#ki-agents</span> <span class="chip">#kalender</span> <span class="chip">#planung</span></td>
+  <td class="mono">2026-07-13</td>
+</tr></tbody>
+  </table></div>
+</main>
+<footer>Automatisch generiert aus dem Ideen-Portfolio (nur Metadaten). Aktionen und Volltexte: lokales Dashboard oder Claude-Session im Hub.</footer>
+</body>
+</html>
